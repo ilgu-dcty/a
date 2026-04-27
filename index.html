@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오행작명소 · 사주 음양오행 기반 아기 이름 짓기</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <span class="brand-mark">五</span>
+        <h1>오행작명소</h1>
+      </div>
+      <p class="lead">
+        사주 <strong>음양오행</strong>을 분석해 우리 아기에게 부족한 기운을 보완하는 이름을 추천해 드립니다.
+        모든 추천에는 <strong>왜 이 이름이 좋은지</strong>를 한자 뜻과 함께 명확하게 설명합니다.
+      </p>
+      <ul class="hero-bullets">
+        <li>① 만세력 기반 사주 4기둥 자동 산출</li>
+        <li>② 음양 균형 / 오행 분포 시각화</li>
+        <li>③ 부족한 오행을 보완하는 한자 이름 다수 추천</li>
+        <li>④ 아기를 위한 길한 일·생활 조언까지</li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card form-card" aria-labelledby="form-title">
+      <h2 id="form-title">아기 정보 입력</h2>
+      <form id="naming-form" class="form-grid" novalidate>
+        <label class="field">
+          <span>성씨 (한글)</span>
+          <input type="text" id="surname" maxlength="2" placeholder="예: 김, 이, 박, 남궁" required />
+        </label>
+
+        <label class="field">
+          <span>성별</span>
+          <select id="gender" required>
+            <option value="여">여아</option>
+            <option value="남">남아</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>생년월일 (양력)</span>
+          <input type="date" id="birthdate" required />
+        </label>
+
+        <label class="field">
+          <span>태어난 시각</span>
+          <input type="time" id="birthtime" value="12:00" required />
+          <small class="hint">정확한 시각을 모르면 12:00을 그대로 두세요. 시주 없이 분석합니다.</small>
+        </label>
+
+        <label class="field field--inline">
+          <input type="checkbox" id="no-time" />
+          <span>태어난 시각을 모릅니다</span>
+        </label>
+
+        <label class="field">
+          <span>이름 글자 수</span>
+          <select id="name-len">
+            <option value="2" selected>두 글자 (예: 지유)</option>
+            <option value="1">한 글자 (예: 단)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>추천 개수</span>
+          <select id="count">
+            <option value="8">8개</option>
+            <option value="12" selected>12개</option>
+            <option value="20">20개</option>
+          </select>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">이름 추천 받기</button>
+          <button type="reset" class="btn-secondary">초기화</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <section class="card" aria-labelledby="saju-title">
+        <h2 id="saju-title">1. 사주 4기둥 (만세력)</h2>
+        <p class="muted" id="saju-summary"></p>
+        <div id="pillars" class="pillars"></div>
+        <details class="explain">
+          <summary>이 표는 어떻게 만들어졌나요?</summary>
+          <div id="pillars-explain" class="explain-body"></div>
+        </details>
+      </section>
+
+      <section class="card" aria-labelledby="yy-title">
+        <h2 id="yy-title">2. 음양 균형</h2>
+        <div id="yinyang" class="yinyang"></div>
+        <p id="yinyang-comment" class="comment"></p>
+      </section>
+
+      <section class="card" aria-labelledby="oh-title">
+        <h2 id="oh-title">3. 오행 분포</h2>
+        <div id="elements" class="elements"></div>
+        <p id="elements-comment" class="comment"></p>
+        <div id="needed" class="needed"></div>
+      </section>
+
+      <section class="card" aria-labelledby="rec-title">
+        <h2 id="rec-title">4. 추천 이름</h2>
+        <p class="muted">부족한 오행을 보완하도록 한자를 골라 조합했습니다. 카드를 눌러 자세한 설명을 확인하세요.</p>
+        <div id="recommendations" class="recommendations"></div>
+      </section>
+
+      <section class="card" aria-labelledby="lucky-title">
+        <h2 id="lucky-title">5. 아기를 위한 길한 일 · 생활 조언</h2>
+        <div id="lucky" class="lucky"></div>
+      </section>
+
+      <section class="card disclaimer">
+        <h3>안내</h3>
+        <p>
+          본 서비스의 사주는 양력 생일을 기준으로 만세력을 자동 계산합니다. 입춘·절기 보정을 적용하지만,
+          전통 작명소의 81수리·항렬자·돌림자 같은 가문 규칙은 다루지 않습니다.
+          최종 작명 시 부모님의 마음에 드는 글자를 우선해 주세요.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 오행작명소 · 좋은 이름은 좋은 출발입니다.</p>
+  </footer>
+
+  <script src="js/hanja.js"></script>
+  <script src="js/saju.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
