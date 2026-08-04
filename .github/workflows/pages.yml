@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - claude/baby-name-fortune-service-gddHy
+      - claude/bobath-website-redesign-nonomv
       - main
   workflow_dispatch:
 
