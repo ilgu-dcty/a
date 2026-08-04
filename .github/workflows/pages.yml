@@ -26,9 +26,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          # 저장소에 Pages가 켜져 있지 않으면 워크플로가 직접 활성화합니다.
-          enablement: true
+        # 사전 준비: Settings → Pages → Source 를 "GitHub Actions" 로 설정해야 동작합니다.
+        # (워크플로 토큰으로는 Pages 를 활성화할 수 없습니다.)
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
